@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -132,7 +138,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812160952089_InitialMode.cs" />
+    <Compile Include="Migrations\201812160952089_InitialMode.Designer.cs">
+      <DependentUpon>201812160952089_InitialMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812161024316_AddingMembershipType.cs" />
+    <Compile Include="Migrations\201812161024316_AddingMembershipType.Designer.cs">
+      <DependentUpon>201812161024316_AddingMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812161027471_PopulatemembershipTypes.cs" />
+    <Compile Include="Migrations\201812161027471_PopulatemembershipTypes.Designer.cs">
+      <DependentUpon>201812161027471_PopulatemembershipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812161044531_updatingnullablefieldofCustomerName.cs" />
+    <Compile Include="Migrations\201812161044531_updatingnullablefieldofCustomerName.Designer.cs">
+      <DependentUpon>201812161044531_updatingnullablefieldofCustomerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\FlixlyDbContext.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -185,6 +210,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201812160952089_InitialMode.resx">
+      <DependentUpon>201812160952089_InitialMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812161024316_AddingMembershipType.resx">
+      <DependentUpon>201812161024316_AddingMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812161027471_PopulatemembershipTypes.resx">
+      <DependentUpon>201812161027471_PopulatemembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812161044531_updatingnullablefieldofCustomerName.resx">
+      <DependentUpon>201812161044531_updatingnullablefieldofCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

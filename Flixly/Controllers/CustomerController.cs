@@ -4,27 +4,34 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Flixly.Models;
+using System.Data.Entity;
 
 namespace Flixly.Controllers
 {
     public class CustomerController : Controller
     {
-        private List<Customer> _customers = new List<Customer>()
+        private FlixlyDbContext _context;
+
+        public CustomerController()
         {
-            new Customer() { Id = 1, Name = "Ram"},
-            new Customer() { Id = 2, Name = "Lakshmana"}
-        };
+            _context = new FlixlyDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         // GET: Customer
         public ActionResult Index()
         {
-            return View(_customers);
+            return View(_context.customers.Include(c => c.MembershipType).ToList());
         }
 
         [Route("customer/details/{id:regex(\\d{1})}")]
         public ActionResult Edit(int id)
         {
-            Customer customer = (Customer)_customers.SingleOrDefault(c => c.Id == id);
+            Customer customer = _context.customers.SingleOrDefault(c => c.Id == id);
             if (customer != null)
                 return View("EditCustomer", customer);
             else

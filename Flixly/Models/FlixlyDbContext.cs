@@ -6,9 +6,12 @@ using System.Data.Entity;
 
 namespace Flixly.Models
 {
-    public class Movie
+    public class FlixlyDbContext : DbContext
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public DbSet<Customer> customers { get; set; }
+        public FlixlyDbContext()
+        {
+
+        }
     }
 }
